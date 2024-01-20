@@ -6,7 +6,7 @@ import xmltodict
 import liboidcagent as agent
 from boto3 import Session
 
-def s3_session_credentials(oidc_profile, endpoint="https://minio.cloud.infn.it/", verify=True, audience=None, duration_s=3600):
+def s3_session_credentials(oidc_profile, endpoint="https://rgw.cloud.infn.it/", verify=True, audience=object, duration_s=3600):
     if not audience:
         token = agent.get_access_token(
             oidc_profile,
@@ -47,7 +47,7 @@ def s3_session_credentials(oidc_profile, endpoint="https://minio.cloud.infn.it/"
         expiry_time=credentials['Expiration'])
 
 
-def assumed_session(oidc_profile, endpoint="https://minio.cloud.infn.it/", verify=True, session=None, audience=None, duration_s=3600):
+def assumed_session(oidc_profile, endpoint="https://rgw.cloud.infn.it/", verify=True, session=None, audience=object, duration_s=3600):
     """STS Role assume a boto3.Session
 
     With automatic credential renewal.
