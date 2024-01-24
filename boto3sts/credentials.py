@@ -25,7 +25,8 @@ def s3_session_credentials(oidc_profile, endpoint="https://rgw.cloud.infn.it/", 
                     'Action':
                     "AssumeRoleWithWebIdentity",
                     'Version': "2011-06-15",
-                    'WebIdentityToken': token
+                    'WebIdentityToken': token,
+                    'RoleArn': 'arn:aws:iam::role/IAMaccess'
                 },
                 verify=verify)
 
